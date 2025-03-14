@@ -1,0 +1,14 @@
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\bin\Debug\net9.0\ContactsConsole.exe
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\bin\Debug\net9.0\ContactsConsole.deps.json
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\bin\Debug\net9.0\ContactsConsole.runtimeconfig.json
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\bin\Debug\net9.0\ContactsConsole.dll
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\bin\Debug\net9.0\ContactsConsole.pdb
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.AssemblyInfoInputs.cache
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.AssemblyInfo.cs
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.csproj.CoreCompileInputs.cache
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.dll
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\refint\ContactsConsole.dll
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.pdb
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.genruntimeconfig.cache
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ref\ContactsConsole.dll
