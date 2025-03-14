@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "Name": "Victoria",
     "Surname": "Wagner",
@@ -10,5 +10,23 @@
     "Surname": "Doe",
     "Email": "john.doe@example.com",
     "Phone": "987654321"
+  },
+  {
+    "Name": "Anna",
+    "Surname": "Smith",
+    "Email": "anna@example.com",
+    "Phone": "555123456"
+  },
+  {
+    "Name": "Anna",
+    "Surname": "Smith",
+    "Email": "anna@example.com",
+    "Phone": "555123456"
+  },
+  {
+    "Name": "Anna",
+    "Surname": "Smith",
+    "Email": "anna@example.com",
+    "Phone": "555123456"
   }
 ]

@@ -5,30 +5,32 @@ namespace ContactsConsole;
 
 class Program
 {
-    static async Task Main(string[] args)
+    static void Main(string[] args)
     {
-        Console.WriteLine("Current Working Directory: " + Directory.GetCurrentDirectory());
+        // string filePath = Path.Combine(Directory.GetCurrentDirectory(), "data", "contacts.json");
         string filePath = @"..\..\..\data\contacts.json";
-        try
-        {
-            string jsonResponse = await File.ReadAllTextAsync(filePath);
-            List<Contact> contacts = JsonSerializer.Deserialize<List<Contact>>(jsonResponse);
-            Console.WriteLine("name: |  surname: |  email: |  phone: |  address: |");
-            foreach (var contact in contacts)
-            {
-                
-                Console.WriteLine("----------------------------------------------------------------");
-                Console.WriteLine($"{contact.Name} | {contact.Surname} | {contact.Email} | {contact.Phone}");
-                
-            }
+        string json = File.ReadAllText(filePath);
 
-        }
-        catch (Exception e)
+        List<Contact> contacts = JsonSerializer.Deserialize<List<Contact>>(json);
+        Console.WriteLine("┌──────────────┬──────────────┬───────────────────────┬───────────────┐");
+        Console.WriteLine("│ Name         │ Surname      │ Email                 │ Phone         │");
+        Console.WriteLine("├──────────────┼──────────────┼───────────────────────┼───────────────┤");
+
+        foreach (var contact in contacts)
         {
-            Console.WriteLine($"Error: {e.Message}");
-            throw;
+            Console.WriteLine($"│ {contact.Name,-12} │ {contact.Surname,-12} │ {contact.Email,-21} │ {contact.Phone,-13} │");
         }
+
+        Console.WriteLine("└──────────────┴──────────────┴───────────────────────┴───────────────┘");
+
         
+        contacts.Add(new Contact("Anna", "Smith", "anna@example.com", "555123456"));
+
+        string updatedJson = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(filePath, updatedJson);
+
+
+
 
         
         
