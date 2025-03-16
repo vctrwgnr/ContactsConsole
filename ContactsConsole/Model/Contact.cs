@@ -68,21 +68,32 @@ public class Contact
         contacts.Add(printInputQuestions());
         string updatedJson = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(filePath, updatedJson);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Contact successfully added!");
         
     }
 
     private static Contact printInputQuestions()
     {
-        Console.WriteLine("Name:");
-        var name = Console.ReadLine();
-        Console.WriteLine("Surname:");
-        var surname = Console.ReadLine();
-        Console.WriteLine("Email:");
-        var email = Console.ReadLine();
-        Console.WriteLine("Phone:");
-        var phone = Console.ReadLine();
+        
+        var name = UserInputValidator.SimpleStringValidation(
+            "Please enter your name (it cannot be empty):",
+            "Error: Name cannot be empty. Try again.");
+       
+        var surname = UserInputValidator.SimpleStringValidation(
+            "Please enter your surname (it cannot be empty):",
+            "Error: Surname cannot be empty. Try again.");
+        
+        var email = UserInputValidator.EmailValidation(
+            "Please enter your email (it cannot be empty):",
+            "Error: It is not a valid email. Try again.");
+        
+        var phone = UserInputValidator.PhoneValidation(
+            "Please enter your phone number (it cannot be empty):",
+            "Invalid input! Please enter a valid phone number containing only digits (no letters or symbols).");
         return new Contact(name, surname, email, phone);
     }
+    
 
     public static void DeleteContact(List<Contact> contacts, string filePath)
     {

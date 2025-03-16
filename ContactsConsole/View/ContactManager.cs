@@ -8,10 +8,14 @@ public class ContactManager
     
     public static void welcomeMessage(List<Contact> contacts, string filePath)
     {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"What would you like to do?");
         Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.WriteLine($"What would you like to do? \n 1. See all contacts." +
+        Console.WriteLine($" 1. See all contacts." +
                           $" \n 2. Add new contact. \n 3. Edit contact. \n 4. Delete contact. " +
-                          $"\n 5. Exit. \n Please, enter a number between 1 and 5:");
+                          $"\n 5. Exit.");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"Please, enter a number between 1 and 5:");
         Console.ResetColor();
         userInput(contacts, filePath);
     }
@@ -28,6 +32,10 @@ public class ContactManager
             addNewContact(contacts, filePath);
             printAllContacts(contacts, filePath);
             welcomeMessage(contacts, filePath);
+        }
+        else if (input == "3")
+        {
+            Console.WriteLine("Editing is under construction.");
         }
         else if (input == "4")
         {

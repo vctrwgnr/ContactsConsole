@@ -12,3 +12,4 @@ C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\n
 C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.pdb
 C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.genruntimeconfig.cache
 C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ref\ContactsConsole.dll
+C:\Users\VictoriaEmich\RiderProjects\ContactsConsole\ContactsConsole\obj\Debug\net9.0\ContactsConsole.sourcelink.json
