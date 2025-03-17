@@ -44,15 +44,15 @@ public class Contact
     public static void printTableTop()
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("┌────┬──────────────┬──────────────┬───────────────────────┬───────────────┐");
-        Console.WriteLine("│ ID │ Name         │ Surname      │ Email                 │ Phone         │");
-        Console.WriteLine("├────┼──────────────┼──────────────┼───────────────────────┼───────────────┤");
+        Console.WriteLine("┌────┬──────────────────────┬──────────────────────┬──────────────────────────────────────┬──────────────────────┐");
+        Console.WriteLine("│ ID │ Name                 │ Surname              │ Email                                │ Phone                │");
+        Console.WriteLine("├────┼──────────────────────┼──────────────────────┼──────────────────────────────────────┼──────────────────────┤");
     }
 
     public static void printTableBottom()
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("└────┴──────────────┴──────────────┴───────────────────────┴───────────────┘");
+        Console.WriteLine("└────┴──────────────────────┴──────────────────────┴──────────────────────────────────────┴──────────────────────┘");
     }
 
     public static void printContacts(List<Contact> contacts)
@@ -60,9 +60,13 @@ public class Contact
         Console.ForegroundColor = ConsoleColor.Yellow;
         foreach (var contact in contacts)
         {
-            Console.WriteLine($"│ {contact.Id,-2} │ {contact.Name,-12} │ {contact.Surname,-12} │ {contact.Email,-21} │ {contact.Phone,-13} │");
+            Console.WriteLine(
+                $"│ {contact.Id,-2} │ {contact.Name,-20} │ {contact.Surname,-20} │ {contact.Email,-36} │ {contact.Phone,-20} │"
+            );
         }
     }
+
+
 
     public static void addNewContact(List<Contact> contacts, string filePath)
     {
@@ -108,7 +112,7 @@ public class Contact
 
         if (contactToRemove != null)
         {
-            
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Are you sure you want to delete {contactToRemove.Name} {contactToRemove.Surname}? (y/n):");
             var userAnswer = Console.ReadLine().ToLower(); 
 
@@ -166,7 +170,7 @@ public class Contact
         if (contactToEdit != null)
         {
             
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("Current Contact Details:");
             Console.WriteLine($"Name: {contactToEdit.Name}");
             Console.WriteLine($"Surname: {contactToEdit.Surname}");
@@ -193,14 +197,29 @@ public class Contact
             var newEmail = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(newEmail))
             {
-                contactToEdit.Email = newEmail;
+                var validatedEmail = UserInputValidator.EmailValidation(
+                    "Please enter your email (it cannot be empty):",
+                    "Error: It is not a valid email. Try again."
+                );
+                if (validatedEmail != null)
+                {
+                    contactToEdit.Email = validatedEmail;
+                }
+               
             }
 
             Console.WriteLine("Enter new Phone (leave blank to keep current):");
             var newPhone = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(newPhone))
             {
-                contactToEdit.Phone = newPhone;
+                var validatedPhone = UserInputValidator.PhoneValidation(
+                    "Please enter your phone number (it cannot be empty):",
+                    "Invalid input! Please enter a valid phone number containing only digits (no letters or symbols).");
+                if (validatedPhone != null)
+                {
+                    contactToEdit.Phone = validatedPhone;
+                }
+                
             }
 
             

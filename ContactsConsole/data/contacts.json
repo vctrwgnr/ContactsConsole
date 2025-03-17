@@ -4,13 +4,13 @@
     "Name": "Victoria",
     "Surname": "Wagner",
     "Email": "abc@gmail.com",
-    "Phone": "123456789"
+    "Phone": "03078987"
   },
   {
     "Id": 2,
-    "Name": "John",
-    "Surname": "Doe",
-    "Email": "john.doe@example.com",
-    "Phone": "987654321"
+    "Name": "Anna",
+    "Surname": "White",
+    "Email": "white@gmail.com",
+    "Phone": "03078555"
   }
 ]
