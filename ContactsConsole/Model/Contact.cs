@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Channels;
 
 namespace ContactsConsole.Model;
 
@@ -95,40 +96,134 @@ public class Contact
     }
     
 
-    public static void DeleteContact(List<Contact> contacts, string filePath)
-    {
-        Console.WriteLine("Enter the ID of the contact you would like to delete: ");
-        var userInputId = Console.ReadLine();
+   public static void DeleteContact(List<Contact> contacts, string filePath)
+{
+    Console.WriteLine("Enter the ID of the contact you would like to delete:");
+    var userInputId = Console.ReadLine();
 
+    if (int.TryParse(userInputId, out int id))
+    {
         
-        if (int.TryParse(userInputId, out int id))
+        var contactToRemove = contacts.FirstOrDefault(c => c.Id == id);
+
+        if (contactToRemove != null)
         {
             
-            var contactToRemove = contacts.FirstOrDefault(c => c.Id == id);
+            Console.WriteLine($"Are you sure you want to delete {contactToRemove.Name} {contactToRemove.Surname}? (y/n):");
+            var userAnswer = Console.ReadLine().ToLower(); 
 
-            if (contactToRemove != null)
+            if (userAnswer == "y")
             {
-                
+               
                 contacts.Remove(contactToRemove);
 
                 
                 string updatedJson = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(filePath, updatedJson);
-                
+
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Contact deleted successfully.");
+               
+            }
+            else if (userAnswer == "n")
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Deletion canceled.");
+                
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Contact not found.");
+                Console.WriteLine("Invalid input. Please enter 'y' or 'n'.");
+                
             }
         }
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Invalid ID format.");
+            Console.WriteLine("Contact not found.");
+            
         }
     }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Invalid ID format.");
+        
+    }
+}
+    public static void EditContact(List<Contact> contacts, string filePath)
+{
+    
+    Console.WriteLine("Enter the ID of the contact you would like to edit:");
+    var userInputId = Console.ReadLine();
+
+    if (int.TryParse(userInputId, out int id))
+    {
+        
+        var contactToEdit = contacts.FirstOrDefault(c => c.Id == id);
+
+        if (contactToEdit != null)
+        {
+            
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Current Contact Details:");
+            Console.WriteLine($"Name: {contactToEdit.Name}");
+            Console.WriteLine($"Surname: {contactToEdit.Surname}");
+            Console.WriteLine($"Email: {contactToEdit.Email}");
+            Console.WriteLine($"Phone: {contactToEdit.Phone}");
+            Console.ResetColor();
+
+          
+            Console.WriteLine("Enter new Name (leave blank to keep current):");
+            var newName = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newName))
+            {
+                contactToEdit.Name = newName;
+            }
+
+            Console.WriteLine("Enter new Surname (leave blank to keep current):");
+            var newSurname = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newSurname))
+            {
+                contactToEdit.Surname = newSurname;
+            }
+
+            Console.WriteLine("Enter new Email (leave blank to keep current):");
+            var newEmail = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newEmail))
+            {
+                contactToEdit.Email = newEmail;
+            }
+
+            Console.WriteLine("Enter new Phone (leave blank to keep current):");
+            var newPhone = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newPhone))
+            {
+                contactToEdit.Phone = newPhone;
+            }
+
+            
+            string updatedJson = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(filePath, updatedJson);
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Contact updated successfully.");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Contact not found.");
+            Console.ResetColor();
+        }
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Invalid ID format.");
+        Console.ResetColor();
+    }
+}
 
 }

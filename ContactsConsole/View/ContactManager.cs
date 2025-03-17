@@ -30,17 +30,19 @@ public class ContactManager
         else if (input == "2")
         {
             addNewContact(contacts, filePath);
-            printAllContacts(contacts, filePath);
+            // printAllContacts(contacts, filePath);
             welcomeMessage(contacts, filePath);
         }
         else if (input == "3")
         {
-            Console.WriteLine("Editing is under construction.");
+            editContact(contacts, filePath);
+            // Console.WriteLine("Editing is under construction.");
+            welcomeMessage(contacts, filePath);
         }
         else if (input == "4")
         {
             deleteContact(contacts, filePath);
-            printAllContacts(contacts, filePath);
+            // printAllContacts(contacts, filePath);
             welcomeMessage(contacts, filePath);
         }
         else if (input == "5")
@@ -67,5 +69,9 @@ public class ContactManager
     public static void deleteContact(List<Contact> contacts, string filePath)
     {
         Contact.DeleteContact(contacts, filePath);
+    }
+    public static void editContact(List<Contact> contacts, string filePath)
+    {
+        Contact.EditContact(contacts, filePath);
     }
 }

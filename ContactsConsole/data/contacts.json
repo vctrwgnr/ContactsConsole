@@ -15,16 +15,9 @@
   },
   {
     "Id": 3,
-    "Name": "q",
-    "Surname": "q",
-    "Email": "a@a.",
-    "Phone": "111"
-  },
-  {
-    "Id": 4,
-    "Name": "Max",
-    "Surname": "Schumacher",
-    "Email": "ww@de.uk",
-    "Phone": "123456789"
+    "Name": "dfs",
+    "Surname": "dsf",
+    "Email": "a@.a",
+    "Phone": "12345"
   }
 ]
