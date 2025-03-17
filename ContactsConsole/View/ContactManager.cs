@@ -35,19 +35,28 @@ public class ContactManager
         }
         else if (input == "3")
         {
+            // printAllContacts(contacts, filePath);
             editContact(contacts, filePath);
             // Console.WriteLine("Editing is under construction.");
             welcomeMessage(contacts, filePath);
         }
         else if (input == "4")
         {
-            deleteContact(contacts, filePath);
             // printAllContacts(contacts, filePath);
+            deleteContact(contacts, filePath);
             welcomeMessage(contacts, filePath);
+            // Console.ReadKey(); 
+            // Console.Clear();
         }
         else if (input == "5")
         {
             Environment.Exit(0);
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Invalid input. Try again.");
+            welcomeMessage(contacts, filePath);
         }
     }
 
