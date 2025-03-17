@@ -10,14 +10,26 @@ class Program
     {
         // string filePath = Path.Combine(Directory.GetCurrentDirectory(), "data", "contacts.json");
         const string filePath = @"..\..\..\data\contacts.json";
-        string json = File.ReadAllText(filePath);
+        try
+        {
+            string json = File.ReadAllText(filePath);
 
-        List<Contact> contacts = JsonSerializer.Deserialize<List<Contact>>(json) ?? new List<Contact>();
-        Contact.SetNextId(contacts);
+            List<Contact> contacts = JsonSerializer.Deserialize<List<Contact>>(json) ?? new List<Contact>();
+            Contact.SetNextId(contacts);
 
-        ContactManager.welcomeMessage(contacts, filePath);
+            ContactManager.welcomeMessage(contacts, filePath);
 
-   
+        }
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine($"Error: the file was not found.");
+            throw;
+        }
+
+        catch (Exception)
+        {
+            Console.WriteLine($"Error.");
+        }
         
     }
 }

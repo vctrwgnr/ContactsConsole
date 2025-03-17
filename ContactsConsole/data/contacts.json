@@ -12,5 +12,12 @@
     "Surname": "White",
     "Email": "white@gmail.com",
     "Phone": "03078555"
+  },
+  {
+    "Id": 3,
+    "Name": "Max",
+    "Surname": "Green",
+    "Email": "grenn@abc.de",
+    "Phone": "098716254"
   }
 ]
